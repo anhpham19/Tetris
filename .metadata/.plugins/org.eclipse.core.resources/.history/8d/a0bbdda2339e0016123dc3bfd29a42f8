@@ -1,0 +1,65 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.geom.Line2D;
+
+public class TetrisBoardGUIView extends JComponent
+{
+  public TetrisBoard board;
+
+  public TetrisBoardGUIView(TetrisBoard board)
+  {
+    this.board = board;
+    
+    //setOpaque(true);
+  }
+
+  public void paint(Graphics g)
+  {
+	  Graphics2D g2 = (Graphics2D) g;
+      g2.setStroke(new BasicStroke(5)); 
+      
+      
+    int blockSize = computeBlockSize();
+    
+    paintBoardOutline(g2, blockSize);
+
+    for (int row = 0; row < board.getNumRows(); row++)
+    {
+      for (int col = 0; col < board.getNumCols(); col++)
+      {
+        if (board.hasBlock(row, col))
+        {
+          paintBlock(g2, row, col, blockSize);
+        }
+      }
+    }
+  }
+
+  private void paintBoardOutline(Graphics g, int blockSize)
+  {
+    g.setColor(Color.BLACK);
+    g.drawRect(0, 0, blockSize * board.getNumCols(), blockSize * board.getNumRows());
+  }
+
+  private void paintBlock(Graphics g, int row, int col, int blockSize)
+  {
+    int upperX = col * blockSize;
+    int upperY = row * blockSize;
+
+    g.setColor(new Color(1.0F, 0.0F, 1.0F));
+    g.fillRect(upperX, upperY, blockSize, blockSize);
+
+    g.setColor(new Color(0.0F, 0.0F, 0.0F));
+    g.drawRect(upperX, upperY, blockSize, blockSize);
+  }
+
+  private int computeBlockSize()
+  {
+    int maxWidth = getWidth() / board.getNumCols();
+
+    int maxHeight = getHeight() / board.getNumRows();
+
+    return Math.min(maxWidth, maxHeight);
+  }
+}
+

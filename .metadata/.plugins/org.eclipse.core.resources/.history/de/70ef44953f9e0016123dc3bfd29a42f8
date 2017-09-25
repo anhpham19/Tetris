@@ -1,0 +1,76 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class TetrisBoardGUIView extends JComponent
+{
+  public TetrisBoard board;
+  
+  public Color pieceColor;
+
+  public TetrisBoardGUIView(TetrisBoard board)
+  {
+    this.board = board;
+    
+  }
+
+  public void paint(Graphics g)
+  {
+	 Graphics2D g2 = (Graphics2D) g;
+	 
+     g2.setStroke(new BasicStroke(4)); 
+
+    int blockSize = computeBlockSize();
+    
+    paintBoardOutline(g2, blockSize);
+
+    for (int row = 0; row < board.getNumRows(); row++)
+    {
+      for (int col = 0; col < board.getNumCols(); col++)
+      {
+        if (board.hasBlock(row, col))
+        {
+          paintBlock(g2, row, col, blockSize);
+        }
+      }
+    }
+  }
+
+  private void paintBoardOutline(Graphics g, int blockSize)
+  {   
+    g.setColor(Color.BLACK);
+    g.drawRect(0, 0, blockSize * board.getNumCols(), blockSize * board.getNumRows());
+  }
+
+  private void paintBlock(Graphics g, int row, int col, int blockSize)
+  {
+    int xCoord = col * blockSize;
+    int yCoord = row * blockSize;
+
+    g.setColor(pieceColor);
+    g.fillRect(xCoord, yCoord, blockSize, blockSize);
+    
+    g.setColor(Color.BLACK);
+    g.drawRect(xCoord, yCoord, blockSize, blockSize);
+    
+  }
+  private int computeBlockSize()
+  {
+    int blockWidth = getWidth()/board.getNumCols();
+
+    int blockHeight = getHeight()/board.getNumRows();
+
+    int blockSize = 0;
+    
+    if (blockWidth > blockHeight)
+    {
+    	blockSize = blockHeight;
+    }
+    else
+    {
+    	blockSize = blockWidth;
+    }
+    return blockSize;
+  }
+}
+
+

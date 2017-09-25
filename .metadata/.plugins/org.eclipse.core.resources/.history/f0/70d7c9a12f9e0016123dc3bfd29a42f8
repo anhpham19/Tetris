@@ -1,0 +1,69 @@
+
+public class TetrisGame {
+	public static final int RIGHT = 0;
+	public static final int LEFT = 1;
+	public static final int DOWN = 2;
+	public static final int CW = 3;
+	public static final int CCW = 4;
+	private int numLines;
+	private int numTetrises;
+	private TetrisBoard tetrisBoard;
+
+	public TetrisGame() {
+		this.numLines = 0;
+		this.numTetrises = 0;
+
+		this.tetrisBoard = new TetrisBoard();
+	}
+
+	public void attemptMove(int moveType) {
+		switch (moveType) {
+		case 0:
+			this.tetrisBoard.moveRight();
+			break;
+		case 1:
+			this.tetrisBoard.moveLeft();
+			break;
+
+		case 2:
+			if (!this.tetrisBoard.moveDown())
+				endRound();
+			break;
+		case 3:
+			this.tetrisBoard.rotateCW();
+			break;
+		case 4:
+			this.tetrisBoard.rotateCCW();
+			break;
+		default:
+			System.out.println("We shouldn't get here!");
+		}
+
+	}
+
+	private void endRound() {
+		this.tetrisBoard.landPiece();
+
+		int numFoundLines = this.tetrisBoard.numberOfFormedLines();
+
+		if (numFoundLines == 4) {
+			this.numTetrises += 1;
+		}
+
+		this.numLines += numFoundLines;
+
+		this.tetrisBoard.addNewPiece();
+	}
+
+	public int getNumLines() {
+		return this.numLines;
+	}
+
+	public int getNumTetrises() {
+		return this.numTetrises;
+	}
+
+	public TetrisBoard getTetrisBoard() {
+		return this.tetrisBoard;
+	}
+}

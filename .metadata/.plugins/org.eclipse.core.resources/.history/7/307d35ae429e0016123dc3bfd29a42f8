@@ -1,0 +1,497 @@
+import java.awt.*;
+/**
+ * This Board class is the Model. Demonstrates the board of Tetris containing 10 columns and 18 rows 
+ * and maintains the block matrix and the current piece.
+ * @author Anh Pham
+ * @version October 25th
+ *
+ */
+public class TetrisBoard 
+{
+	// number of columns in the board
+	public static final int NUM_COLS = 10;
+	
+	//number of rows in the borard
+	public static final int NUM_ROWS = 18;
+	
+	// variables to hold the state of columns and rows
+	public int numCols;
+	public int numRows;
+	
+	// a boolean to hold the state of the board
+	public boolean[][] blockMatrix;
+	
+	//the current Tetris Piece
+	public TetrisPiece currentPiece;
+	
+	// the current grid position of the tetris piece
+	public int[] currentPieceGridPosition;
+	
+	// each piece is "set up" from 4 rows and 4 columns
+	public int PIECE_BLOCK = 4;
+	
+	public Color pieceColor, S1Color, S2Color;
+	public int randomPiece;
+	
+	/**
+	 * Constructor that sets up a board
+	 */
+	public TetrisBoard() 
+	{
+		// assign the state of columns and rows
+		numCols = NUM_COLS;
+		numRows = NUM_ROWS;
+		
+		//initialize the board
+		initBoard();
+		
+		//initialize the current grid position for the piece
+		initCurrentGP();
+		
+		//there is no current piece yet when constructing the board
+		currentPiece = null;
+		
+		//add a new piece in the board
+		addNewPiece();
+	}
+	
+	/**
+	 * Keep track of the grid position of the current piece ( row and column)
+	 */
+	private void initCurrentGP() 
+	{
+		// The array has length 2 because array[0] stores the current row and array[1] stores the current column 
+		currentPieceGridPosition = new int[2];
+		
+		// loop through the array and assign the current grid position to -1
+		for (int i = 0; i < currentPieceGridPosition.length; i++) 
+		{
+			currentPieceGridPosition[i] = -1;
+		}
+	}
+	
+	/**
+	 * Initialize the 2D board array
+	 */
+	private void initBoard() 
+	{	
+		// check the state of the board for rows and columns
+		blockMatrix = new boolean[numRows][numCols];
+		
+		// loop through the array and assign all false values
+		for (int i = 0; i < blockMatrix.length; i++) 
+		{
+			for (int j = 0; j < blockMatrix[i].length; j++) 
+			{
+				blockMatrix[i][j] = false;
+			}
+		}
+	}
+	
+	/**
+	 * Reflect the newly landed piece on the array
+	 */
+	public void landPiece() 
+	{
+		// loop through the array and update the board 
+		for (int i = 0; i < PIECE_BLOCK; i++) 
+		{
+			for (int j = 0; j < PIECE_BLOCK; j++) 
+			{
+				// check if the current piece with the current rotation is filled
+				if (currentPiece.isFilled(currentPiece.getPieceRotation(), i, j)) 
+				{
+					blockMatrix[(currentPieceGridPosition[0] + i)][(currentPieceGridPosition[1] + j)] = true;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Move the current piece to the left
+	 * @return true if valid move was performed
+	 */
+	public boolean moveLeft() 
+	{
+		// Check if the move left is valid move 
+		boolean validLeft = validMove(currentPiece,
+				currentPiece.getPieceRotation(),
+				currentPieceGridPosition[0],
+				currentPieceGridPosition[1] - 1);
+		
+		// if move left is valid, then the column position decreases by 1 
+		if (validLeft) 
+		{
+			currentPieceGridPosition[1] -= 1;
+		}
+		// return boolean valid left 
+		return validLeft;
+	}
+	
+	/**
+	 * Move the current piece to the right
+	 * @return true if valid move was performed
+	 */
+	public boolean moveRight() 
+	{
+		// Check if the move right is valid move
+		boolean validRight = validMove(currentPiece,
+				currentPiece.getPieceRotation(),
+				currentPieceGridPosition[0],
+				currentPieceGridPosition[1] + 1);
+		
+		// if move right is valid then the column position increases by 1
+		if (validRight) 
+		{
+			currentPieceGridPosition[1] += 1;
+		}
+		//return boolean valid right 
+		return validRight;
+	}
+	
+	/**
+	 * Move the current piece down
+	 * @return true if valid move was performed
+	 */
+	public boolean moveDown() 
+	{
+		// check if move down is valid move
+		boolean validDown = validMove(currentPiece,
+				currentPiece.getPieceRotation(),
+				currentPieceGridPosition[0] + 1,
+				currentPieceGridPosition[1]);
+		
+		// if move down is valid then the row position increases by 1
+		if (validDown) 
+		{
+			currentPieceGridPosition[0] += 1;
+		}
+		// return boolean valid down 
+		return validDown;
+	}
+	
+	/**
+	 * Rotate the current piece Clock-wise by 90 degrees
+	 * @return true if valid move was performed
+	 */
+	public boolean rotateCW() 
+	{
+		// check if rotate CW is valid move
+		boolean validCW = validMove(currentPiece,
+				(currentPiece.getPieceRotation() + 90) % 360,
+				currentPieceGridPosition[0],
+				currentPieceGridPosition[1]);
+		
+		// if rotate CW is valid then the piece can rotate CW by 90 degrees
+		if (validCW) 
+		{
+			currentPiece.rotateCW();
+		}
+		//return boolean valid clock wise 
+		return validCW;
+	}
+
+	/**
+	 * Rotate the current piece Counter-Clock-wise by 90 degrees
+	 * @return true if valid move was performed
+	 */
+	public boolean rotateCCW() 
+	{
+		// check if rotate CCW is valid move
+		boolean validCCW = validMove(currentPiece,
+				(currentPiece.getPieceRotation() + 270) % 360,
+				currentPieceGridPosition[0],
+				currentPieceGridPosition[1]);
+		
+		// if rotate CCW is valid then the piece can rotate CCW by 90 degree
+		if (validCCW) 
+		{
+			currentPiece.rotateCCW();
+		}
+		
+		//return boolean valid counter clock-wise
+		return validCCW;
+	}
+
+	/**
+	 * Check if a piece at a grid position with the rotation collides with another piece
+	 * or there is a block on an already-filled grid square
+	 * 
+	 * @param piece the current piece
+	 * @param rot the rotation of the piece
+	 * @param gridRow the grid row position of the piece
+	 * @param gridCol the grid column position of the piece
+	 * @return true if there would be a collision
+	 */
+	private boolean detectCollision(TetrisPiece piece, int rot, int gridRow, int gridCol) 
+	{
+		for (int i = 0; i < PIECE_BLOCK; i++) 
+		{
+			for (int j = 0; j < PIECE_BLOCK; j++) 
+			{
+				// if the current piece is filled at a specific rotaion, row and column grid position
+				if (piece.isFilled(rot, i, j)) 
+				{
+					// then if there is a block near it, there would be a collision
+					if (blockMatrix[(gridRow + i)][(gridCol + j)] != false) 
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Check if a piece at a grid position with the rotation would cause an out of bound situation
+	 * or if there is a block falling off the board
+	 * 
+	 * @param piece the current piece
+	 * @param rot the rotation of the piece
+	 * @param gridRow the grid row position of the piece
+	 * @param gridCol the grid column position of the piece
+	 * @return true if there would be a bounding error
+	 */
+	private boolean detectOutOfBounds(TetrisPiece piece, int rot, int gridRow, int gridCol) 
+	{
+		// if the grid column position if less than 0, return true
+		if (gridCol < 0) 
+		{
+			return true;
+		}
+		// loop through the array to see if the grid position is larger than the number of rows and cols of board
+		for (int i = 0; i < PIECE_BLOCK; i++) 
+		{
+			for (int j = 0; j < PIECE_BLOCK; j++) 
+			{
+				if (piece.isFilled(rot, i, j)) 
+				{
+					// if the row or the column pisition is larger than rows and cols of board, return true
+					if ((gridRow + i >= numRows) || (gridCol + j >= numCols)) 
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Check if a piece at a grid position with the rotation is a valid move
+	 * @param piece the current piece
+	 * @param rot the rotation of the piece
+	 * @param gridRow the grid row position of the piece
+	 * @param gridCol the grid column position of the piece
+	 * @return true if no collision or bounding error
+	 */
+	private boolean validMove(TetrisPiece piece, int rot, int gridRow, int gridCol) 
+	{
+		// return true if not out of bound and not collide with another piece
+		return (!detectOutOfBounds(piece, rot, gridRow, gridCol)) && (!detectCollision(piece, rot, gridRow, gridCol));
+	}
+	
+	/**
+	 * Check if there is a block in the row and column
+	 * @param row the row being checked
+	 * @param col the column being checked
+	 * @return true if there is a block
+	 */
+	public boolean hasBlock(int row, int col) 
+	{
+		for (int i = 0; i < PIECE_BLOCK; i++) 
+		{
+			for (int j = 0; j < PIECE_BLOCK; j++) 
+			{
+				// variables to check if the row and column is occupied by a block
+				int rowCheck = currentPieceGridPosition[0] + i;
+				int colCheck = currentPieceGridPosition[1] + j;
+				
+				// if the row and col matches the checked position and there is a piece filled at that position, return true
+				if ((rowCheck == row) && (colCheck == col)
+					&& (currentPiece.isFilled(currentPiece.getPieceRotation(), i, j))) 
+				{
+					return true;
+				}
+			}
+		}
+		// return the block matrix boolean
+		return blockMatrix[row][col];
+	}
+	
+	/**
+	 * Add a new random Tetris piece to the board at the middle of the board
+	 */
+	public void addNewPiece() 
+	{
+		// generate a random integer from 1 to 7 because there are 7 types of pieces
+		randomPiece = (int) (1 + (Math.random() * 7));		
+		
+		// generate random piece types including S1, S2, L1, L2, T, Square, Stick
+		switch (randomPiece) 
+		{
+		case 1:
+			currentPiece = new TetrisS1();
+			 S1Color = Color.CYAN;
+			break;
+		case 2:
+			currentPiece = new TetrisS2();
+			 S2Color = Color.GREEN;
+			break;
+		case 3:
+			currentPiece = new TetrisL1();
+			//Color pieceColor = Color.ORANGE;
+			break;
+		case 4:
+			currentPiece = new TetrisL2();
+			//pieceColor = new Color(180, 90, 250);
+			break;
+		case 5:
+			currentPiece = new TetrisT();
+			break;
+			//pieceColor = Color.YELLOW;
+		case 6:
+			currentPiece = new TetrisSquare();
+			//pieceColor = new Color(180, 90, 250);
+			break;
+		case 7:
+			currentPiece = new TetrisStick();
+			//pieceColor = new Color(180, 90, 250);
+			break;
+		}
+		
+		// because the initial piece is at the top column  of the board, column position is 0
+		currentPieceGridPosition[0] = 0;
+		
+		// because the initial piece is at the middle row of the board, column position is 4
+		currentPieceGridPosition[1] = 4;
+	}
+	
+	public Color getPieceColor()
+	{
+		switch (randomPiece)
+		{
+		case 1:
+			pieceColor = S1Color;
+			break;
+		case 2:
+			pieceColor = S2Color;
+			break;
+		}
+		return pieceColor;
+	}
+	/**
+	 * Detect and remove and lines formed
+	 * @return the total number of lines found.
+	 */
+	public int numberOfFormedLines() 
+	{
+		// initially there is no lines found so far
+		int numLines = 0;
+		
+		// loop through the rows of the board
+		for (int i = 0; i < numRows; i++) 
+		{
+			// check if that line is full 
+			if (fullLine(i)) 
+			{
+				// number of lines found increases by 1
+				numLines++;
+				
+				// remove that line
+				removeLine(i);
+			}
+		}
+		// the total number found
+		return numLines;
+	}
+	
+	/**
+	 * Check if there is a full line at the row.
+	 * @param row that current row
+	 * @return true if full
+	 */
+	private boolean fullLine(int row) 
+	{
+		// loop through the rows of the board
+		for (int col = 0; col < numCols; col++) 
+		{
+			// if there is no block at that entire row, return false
+			if (blockMatrix[row][col] == false) 
+			{
+				return false;
+			}
+		}
+		
+		// else, return true
+		return true;
+	}
+
+	/**
+	 * Remove the line at row in the model.
+	 * @param row that current row
+	 */
+	private void removeLine(int row) 
+	{
+		// Shift all values for rows at a lower index to be at one row higher.
+		for (int i = row; i > 0; i--) 
+		{
+			for (int j = 0; j < numCols; j++) 
+			{
+				blockMatrix[i][j] = blockMatrix[(i - 1)][j];
+			}
+		}
+		
+		// Make row 0 full of false values.
+		for (int j = 0; j < numCols; j++) 
+		{
+			blockMatrix[0][j] = false;
+		}
+	}
+
+	/**
+	 * Get the block matrix
+	 * @return the block matrix (the grid of blocks)
+	 */
+	public boolean[][] getBlockMatrix() 
+	{
+		return blockMatrix;
+	}
+	
+	/**
+	 * get the current piece
+	 * @return the currentPiece
+	 */
+	public TetrisPiece getCurrentPiece() 
+	{
+		return currentPiece;
+	}
+	
+	/**
+	 * get the current grid position of the piece 
+	 * @return the currentPieceGridPosition
+	 */
+	public int[] getCurrentPieceGridPosition() 
+	{
+		return currentPieceGridPosition;
+	}
+	
+	/**
+	 * get num cols of the block matrix 
+	 * @return the numCols in the block matrix
+	 */
+	public int getNumCols() 
+	{
+		return numCols;
+	}
+
+	/**
+	 * get num rows of the block matrix 
+	 * @return the numRows in the block matrix
+	 */
+	public int getNumRows() 
+	{
+		return numRows;
+	}
+}

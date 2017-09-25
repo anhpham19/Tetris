@@ -1,0 +1,48 @@
+/**
+ * 
+ * This class represents the tetris piece in Square shape, extends TetrisPiece
+ * 
+ * @author Anh Pham
+ * @version Oct 25th
+ */
+public class TetrisSquare extends TetrisPiece 
+{
+	/**
+	 * Constrcutor of the piece
+	 */
+	public TetrisSquare() 
+	{
+		boolean[][][] filled = 
+			{
+				{ 
+					{ true, true, false, false }, 
+					{ true, true, false, false },
+					{ false, false, false, false },
+					{ false, false, false, false } 
+				},
+
+				{ 
+					{ true, true, false, false }, 
+					{ true, true, false, false },
+					{ false, false, false, false },
+					{ false, false, false, false },
+				},
+
+				{ 
+					{ true, true, false, false },
+					{ true, true, false, false },
+					{ false, false, false, false },
+					{ false, false, false, false }, 
+				},
+
+				{
+					{ true, true, false, false }, 
+					{ true, true, false, false },
+					{ false, false, false, false },
+					{ false, false, false, false }, 
+				} 
+			};
+		// assign this array value 
+		filledSquares = filled;
+	}
+}

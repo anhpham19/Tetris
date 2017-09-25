@@ -1,0 +1,21 @@
+public class TetrisS1 extends TetrisPiece {
+	public TetrisS1() {
+		boolean[][][] filled = {
+				{ { true, false, false, false }, { true, true, false, false },
+						{ false, true, false, false },
+						{ false, false, false, false } },
+
+				{ { false, true, true, false }, { true, true, false, false },
+						{ false, false, false, false },
+						{ false, false, false, false } },
+
+				{ { true, false, false, false }, { true, true, false, false },
+						{ false, true, false, false },
+						{ false, false, false, false } },
+
+				{ { false, true, true, false }, { true, true, false, false },
+						{ false, false, false, false },
+						{ false, false, false, false } } };
+		this.filledSquares = filled;
+	}
+}

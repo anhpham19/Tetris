@@ -1,0 +1,116 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TetrisGameGUIController extends JPanel implements KeyListener
+{
+  public static final int DEFAULT_DROP_RATE = 700;
+  public TetrisGame game;
+  public TetrisBoardGUIView view;
+  public JLabel linesLabel;
+  public JLabel tetrisesLabel;
+  public Timer gameTimer;
+  public int dropRate;
+
+  public TetrisGameGUIController()
+  {
+    super(new BorderLayout());
+
+    game = new TetrisGame();
+
+    createView();
+    createScore();
+    refreshDisplay();
+
+    setFocusable(true);
+    addKeyListener(this);
+
+    dropRate = DEFAULT_DROP_RATE;
+
+    setupTimer();
+  }
+
+  private void setupTimer()
+  {
+    gameTimer = new Timer(dropRate, new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        game.attemptMove(2);
+
+        refreshDisplay();
+      }
+    });
+    
+    gameTimer.start();
+  }
+
+  private void createView()
+  {
+	TetrisBoard board = game.getTetrisBoard();
+    view = new TetrisBoardGUIView(board);
+    add(view, BorderLayout.CENTER);
+  }
+
+  private void createScore()
+  {
+    JPanel scorePanel = new JPanel(new GridLayout(2, 2));
+
+    
+    linesLabel = new JLabel();
+    scorePanel.add(linesLabel);
+
+    
+    tetrisesLabel = new JLabel();
+    scorePanel.add(tetrisesLabel);
+
+    add(scorePanel, BorderLayout.NORTH);
+  }
+
+  public void refreshDisplay()
+  {
+	  linesLabel.setText("Lines Cleared: " + game.getNumLines()); 
+	  
+    
+	  tetrisesLabel.setText("Tetrises cleared: " + game.getNumTetrises());
+
+    repaint();
+  }
+
+  public void keyTyped(KeyEvent e)
+  {
+  }
+
+  public void keyReleased(KeyEvent e)
+  {
+  }
+
+  public void keyPressed(KeyEvent e)
+  {
+	int key = e.getKeyCode();
+	
+	if (key == KeyEvent.VK_RIGHT)
+	{
+		game.attemptMove(0);
+	}
+	else if (key == KeyEvent.VK_LEFT)
+	{
+		game.attemptMove(1);
+	}
+	else if (key == KeyEvent.VK_DOWN)
+	{
+		game.attemptMove(2);
+	}
+	else if (key == KeyEvent.VK_X)
+	{
+		game.attemptMove(3);
+	}
+	else if (key == KeyEvent.VK_Z)
+	{
+		game.attemptMove(4);
+	}
+  
+    refreshDisplay();
+  }
+
+}

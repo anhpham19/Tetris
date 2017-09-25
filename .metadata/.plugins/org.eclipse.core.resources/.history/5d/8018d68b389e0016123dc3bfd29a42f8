@@ -1,0 +1,111 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class TetrisGameGUIController extends JPanel implements KeyListener
+{
+  public static final int DEFAULT_DROP_RATE = 3000;
+  public TetrisGame game;
+  public TetrisBoardGUIView view;
+  public JLabel linesLabel;
+  public JLabel tetrisesLabel;
+  public Timer gameTimer;
+  public int dropRate;
+
+  public TetrisGameGUIController()
+  {
+    super(new BorderLayout());
+
+    this.game = new TetrisGame();
+
+    createView();
+    createScore();
+
+    refreshDisplay();
+
+    setFocusable(true);
+    addKeyListener(this);
+
+    this.dropRate = 3000;
+
+    setupTimer();
+  }
+
+  private void setupTimer()
+  {
+    this.gameTimer = new Timer(this.dropRate, new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        TetrisGameGUIController.this.game.attemptMove(2);
+
+        TetrisGameGUIController.this.refreshDisplay();
+      }
+    });
+    this.gameTimer.start();
+  }
+
+  private void createView()
+  {
+    this.view = new TetrisBoardGUIView(this.game.getTetrisBoard());
+    add(this.view, "Center");
+  }
+
+  private void createScore()
+  {
+    JPanel scorePanel = new JPanel(new GridLayout(2, 2));
+
+    scorePanel.add(new JLabel("Lines cleared"));
+    this.linesLabel = new JLabel("0");
+    scorePanel.add(this.linesLabel);
+
+    scorePanel.add(new JLabel("Tetrises cleared"));
+    this.tetrisesLabel = new JLabel("0");
+    scorePanel.add(this.tetrisesLabel);
+
+    add(scorePanel, "North");
+  }
+
+  public void refreshDisplay()
+  {
+    this.linesLabel.setText(Integer.toString(this.game.getNumLines()));
+    this.tetrisesLabel.setText(Integer.toString(this.game.getNumTetrises()));
+
+    repaint();
+  }
+
+  public void keyTyped(KeyEvent e)
+  {
+  }
+
+  public void keyReleased(KeyEvent e)
+  {
+  }
+
+  public void keyPressed(KeyEvent e)
+  {
+    switch (e.getKeyCode())
+    {
+    case 40:
+      this.game.attemptMove(2);
+      break;
+    case 39:
+      this.game.attemptMove(0);
+      break;
+    case 37:
+      this.game.attemptMove(1);
+      break;
+    case 90:
+      this.game.attemptMove(4);
+      break;
+    case 88:
+      this.game.attemptMove(3);
+      break;
+    default:
+      System.out.println("KEY RELEASED: " + e.getKeyCode());
+    }
+
+    refreshDisplay();
+  }
+
+}

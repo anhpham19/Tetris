@@ -1,0 +1,48 @@
+
+public abstract class TetrisPiece {
+	protected boolean[][][] filledSquares;
+	protected int pieceRotation;
+
+	public TetrisPiece() {
+		this.pieceRotation = 0;
+	}
+
+	public void rotateCW() {
+		this.pieceRotation = ((this.pieceRotation + 1) % 4);
+	}
+
+	public void rotateCCW() {
+		this.pieceRotation = ((this.pieceRotation - 1 + 4) % 4);
+	}
+
+	public int getPieceRotation() {
+		switch (this.pieceRotation) {
+		case 0:
+			return 0;
+		case 1:
+			return 90;
+		case 2:
+			return 180;
+		case 3:
+			return 270;
+		}
+		System.out.println("pieceRotation has a value it shouldn't!");
+		return -1;
+	}
+
+	public boolean isFilled(int rot, int row, int col) {
+		int index = 0;
+
+		switch (rot) {
+		case 90:
+			index = 1;
+			break;
+		case 180:
+			index = 2;
+			break;
+		case 270:
+			index = 3;
+		}
+		return this.filledSquares[index][row][col];
+	}
+}

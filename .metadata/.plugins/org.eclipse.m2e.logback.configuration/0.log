@@ -1,0 +1,166 @@
+2016-10-25 19:00:31,143 [Worker-8] WARN  o.e.a.i.i.DefaultUpdateCheckManager - Failed to write tracking file /Volumes/pham29a/dev/cs201/Tetris/.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT/resolver-status.properties
+java.io.IOException: Operation not supported
+	at sun.nio.ch.FileDispatcherImpl.lock0(Native Method) ~[na:1.8.0_101]
+	at sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:90) ~[na:1.8.0_101]
+	at sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1073) ~[na:1.8.0_101]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.lock(TrackingFileManager.java:203) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.update(TrackingFileManager.java:97) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.write(DefaultUpdateCheckManager.java:617) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.touchMetadata(DefaultUpdateCheckManager.java:584) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$ResolveTask.run(DefaultMetadataResolver.java:641) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) [org.eclipse.aether.util_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$1.execute(DefaultMetadataResolver.java:527) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolve(DefaultMetadataResolver.java:382) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolveMetadata(DefaultMetadataResolver.java:205) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.apache.maven.repository.internal.DefaultVersionResolver.resolveVersion(DefaultVersionResolver.java:250) [maven-aether-provider-3.1.0.jar:3.1.0]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:302) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:186) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:168) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:162) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:73) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.1.v20141014-1248.jar:na]
+2016-10-29 19:52:37,747 [Worker-22] WARN  o.e.a.i.i.DefaultUpdateCheckManager - Failed to read tracking file /Volumes/pham29a/dev/cs201/Tetris/.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT/resolver-status.properties
+java.io.IOException: Operation not supported
+	at sun.nio.ch.FileDispatcherImpl.lock0(Native Method) ~[na:1.8.0_101]
+	at sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:90) ~[na:1.8.0_101]
+	at sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1073) ~[na:1.8.0_101]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.lock(TrackingFileManager.java:203) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.read(TrackingFileManager.java:58) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.read(DefaultUpdateCheckManager.java:538) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkMetadata(DefaultUpdateCheckManager.java:272) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolve(DefaultMetadataResolver.java:332) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolveMetadata(DefaultMetadataResolver.java:205) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.apache.maven.repository.internal.DefaultVersionResolver.resolveVersion(DefaultVersionResolver.java:250) [maven-aether-provider-3.1.0.jar:3.1.0]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:302) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:186) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:168) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:162) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:73) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.1.v20141014-1248.jar:na]
+2016-10-29 19:52:38,116 [Worker-22] WARN  o.e.a.i.i.DefaultUpdateCheckManager - Failed to write tracking file /Volumes/pham29a/dev/cs201/Tetris/.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT/resolver-status.properties
+java.io.IOException: Operation not supported
+	at sun.nio.ch.FileDispatcherImpl.lock0(Native Method) ~[na:1.8.0_101]
+	at sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:90) ~[na:1.8.0_101]
+	at sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1073) ~[na:1.8.0_101]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.lock(TrackingFileManager.java:203) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.update(TrackingFileManager.java:97) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.write(DefaultUpdateCheckManager.java:617) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.touchMetadata(DefaultUpdateCheckManager.java:584) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$ResolveTask.run(DefaultMetadataResolver.java:641) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) [org.eclipse.aether.util_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$1.execute(DefaultMetadataResolver.java:527) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolve(DefaultMetadataResolver.java:382) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolveMetadata(DefaultMetadataResolver.java:205) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.apache.maven.repository.internal.DefaultVersionResolver.resolveVersion(DefaultVersionResolver.java:250) [maven-aether-provider-3.1.0.jar:3.1.0]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:302) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:186) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:168) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:162) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:73) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.1.v20141014-1248.jar:na]
+2016-10-30 15:35:29,904 [Worker-9] WARN  o.e.a.i.i.DefaultUpdateCheckManager - Failed to read tracking file /Volumes/pham29a/dev/cs201/Tetris/.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT/resolver-status.properties
+java.io.IOException: Operation not supported
+	at sun.nio.ch.FileDispatcherImpl.lock0(Native Method) ~[na:1.8.0_101]
+	at sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:90) ~[na:1.8.0_101]
+	at sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1073) ~[na:1.8.0_101]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.lock(TrackingFileManager.java:203) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.read(TrackingFileManager.java:58) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.read(DefaultUpdateCheckManager.java:538) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkMetadata(DefaultUpdateCheckManager.java:272) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolve(DefaultMetadataResolver.java:332) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolveMetadata(DefaultMetadataResolver.java:205) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.apache.maven.repository.internal.DefaultVersionResolver.resolveVersion(DefaultVersionResolver.java:250) [maven-aether-provider-3.1.0.jar:3.1.0]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:302) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:186) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:168) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:162) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:73) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.1.v20141014-1248.jar:na]
+2016-10-30 15:35:30,384 [Worker-9] WARN  o.e.a.i.i.DefaultUpdateCheckManager - Failed to write tracking file /Volumes/pham29a/dev/cs201/Tetris/.recommenders/repository/http___download_eclipse_org_recommenders_models_luna_/org/eclipse/recommenders/index/0.0.0-SNAPSHOT/resolver-status.properties
+java.io.IOException: Operation not supported
+	at sun.nio.ch.FileDispatcherImpl.lock0(Native Method) ~[na:1.8.0_101]
+	at sun.nio.ch.FileDispatcherImpl.lock(FileDispatcherImpl.java:90) ~[na:1.8.0_101]
+	at sun.nio.ch.FileChannelImpl.lock(FileChannelImpl.java:1073) ~[na:1.8.0_101]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.lock(TrackingFileManager.java:203) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.TrackingFileManager.update(TrackingFileManager.java:97) ~[org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.write(DefaultUpdateCheckManager.java:617) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.touchMetadata(DefaultUpdateCheckManager.java:584) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$ResolveTask.run(DefaultMetadataResolver.java:641) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) [org.eclipse.aether.util_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver$1.execute(DefaultMetadataResolver.java:527) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolve(DefaultMetadataResolver.java:382) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultMetadataResolver.resolveMetadata(DefaultMetadataResolver.java:205) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.apache.maven.repository.internal.DefaultVersionResolver.resolveVersion(DefaultVersionResolver.java:250) [maven-aether-provider-3.1.0.jar:3.1.0]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:302) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) [org.eclipse.aether.impl_1.0.1.v20141111.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:186) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:168) [org.eclipse.recommenders.models_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:162) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:73) [org.eclipse.recommenders.models.rcp_2.1.12.v20150212-1812.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.6.1.v20141014-1248.jar:na]
+2016-10-30 15:41:07,970 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@deprecated'). Returning original proposal instead.
+2016-10-30 15:41:07,978 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@value}'). Returning original proposal instead.
+2016-10-30 15:41:07,982 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@since'). Returning original proposal instead.
+2016-10-30 15:41:07,986 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@linkplain}'). Returning original proposal instead.
+2016-10-30 15:41:07,991 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@version'). Returning original proposal instead.
+2016-10-30 15:41:07,994 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@literal}'). Returning original proposal instead.
+2016-10-30 15:41:07,998 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@code}'). Returning original proposal instead.
+2016-10-30 15:41:08,007 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@serial'). Returning original proposal instead.
+2016-10-30 15:41:08,010 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@author'). Returning original proposal instead.
+2016-10-30 15:41:08,015 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@see'). Returning original proposal instead.
+2016-10-30 15:41:08,018 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@category'). Returning original proposal instead.
+2016-10-30 15:41:08,022 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@link}'). Returning original proposal instead.
+2016-10-30 15:41:08,027 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@docRoot}'). Returning original proposal instead.
+2016-10-30 15:57:00,951 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@linkplain}'). Returning original proposal instead.
+2016-10-30 15:57:00,964 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@version'). Returning original proposal instead.
+2016-10-30 15:57:00,967 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@link}'). Returning original proposal instead.
+2016-10-30 15:57:00,971 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@serial'). Returning original proposal instead.
+2016-10-30 15:57:00,976 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@since'). Returning original proposal instead.
+2016-10-30 15:57:00,979 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@value}'). Returning original proposal instead.
+2016-10-30 15:57:00,983 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@see'). Returning original proposal instead.
+2016-10-30 15:57:00,988 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@literal}'). Returning original proposal instead.
+2016-10-30 15:57:00,991 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@category'). Returning original proposal instead.
+2016-10-30 15:57:00,995 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@code}'). Returning original proposal instead.
+2016-10-30 15:57:01,000 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@deprecated'). Returning original proposal instead.
+2016-10-30 15:57:01,003 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@author'). Returning original proposal instead.
+2016-10-30 15:57:01,007 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@docRoot}'). Returning original proposal instead.
+2016-10-30 15:57:05,727 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@code}'). Returning original proposal instead.
+2016-10-30 15:57:05,734 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@linkplain}'). Returning original proposal instead.
+2016-10-30 15:57:05,737 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@category'). Returning original proposal instead.
+2016-10-30 15:57:05,741 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@deprecated'). Returning original proposal instead.
+2016-10-30 15:57:05,747 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@version'). Returning original proposal instead.
+2016-10-30 15:57:05,750 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@literal}'). Returning original proposal instead.
+2016-10-30 15:57:05,754 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@see'). Returning original proposal instead.
+2016-10-30 15:57:05,759 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@serial'). Returning original proposal instead.
+2016-10-30 15:57:05,762 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@value}'). Returning original proposal instead.
+2016-10-30 15:57:05,766 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@link}'). Returning original proposal instead.
+2016-10-30 15:57:05,771 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@since'). Returning original proposal instead.
+2016-10-30 15:57:05,774 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@author'). Returning original proposal instead.
+2016-10-30 15:57:05,777 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@docRoot}'). Returning original proposal instead.
+2016-10-30 16:00:57,181 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@version'). Returning original proposal instead.
+2016-10-30 16:00:57,188 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@docRoot}'). Returning original proposal instead.
+2016-10-30 16:00:57,191 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@category'). Returning original proposal instead.
+2016-10-30 16:00:57,195 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@value}'). Returning original proposal instead.
+2016-10-30 16:00:57,200 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@see'). Returning original proposal instead.
+2016-10-30 16:00:57,203 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@code}'). Returning original proposal instead.
+2016-10-30 16:00:57,207 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@since'). Returning original proposal instead.
+2016-10-30 16:00:57,214 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@deprecated'). Returning original proposal instead.
+2016-10-30 16:00:57,217 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@literal}'). Returning original proposal instead.
+2016-10-30 16:00:57,220 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@linkplain}'). Returning original proposal instead.
+2016-10-30 16:00:57,225 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@author'). Returning original proposal instead.
+2016-10-30 16:00:57,230 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.javadoc.JavadocInlineTagCompletionProposal' ('{@link}'). Returning original proposal instead.
+2016-10-30 16:00:57,234 [main] WARN  o.e.r.c.r.p.ProcessableProposalFactory - Unknown JDT proposal type 'class org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal' ('@serial'). Returning original proposal instead.

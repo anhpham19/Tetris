@@ -1,0 +1,17 @@
+import javax.swing.*;
+
+public class TetrisGameGUIApplication
+{
+  public static void main(String[] args)
+  {
+    JFrame tetrisFrame = new JFrame();
+
+    tetrisFrame.setSize(370, 730);
+
+    tetrisFrame.add(new TetrisGameGUIController());
+
+    //tetrisFrame.setDefaultCloseOperation(3);
+
+    tetrisFrame.setVisible(true);
+  }
+}

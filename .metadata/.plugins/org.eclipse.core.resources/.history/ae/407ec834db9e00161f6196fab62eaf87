@@ -1,0 +1,29 @@
+import javax.swing.*;
+
+/**
+ * This class is the command line version of the GUI Tetris game
+ * 
+ * @author Anh Pham
+ * @version Oct 30
+ */
+public class TetrisGameGUIApplication 
+{
+	/**
+	 * Start the game
+	 * @param args the String argument
+	 */
+	public static void main(String[] args) 
+	{
+		// Create a new JFrame
+		JFrame frame = new JFrame();
+		
+		// set size for the frame
+		frame.setSize(370, 730);
+		
+		// add the GUI controller into the frame
+		frame.add(new TetrisGameGUIController());
+		
+		// set the frame visible to users
+		frame.setVisible(true);
+	}
+}
